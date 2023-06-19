@@ -1,4 +1,5 @@
 import pytest
+from main import Solution
 
 def test_zigzag_conversion_1():
     solution = Solution()
