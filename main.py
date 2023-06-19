@@ -8,14 +8,23 @@ class Solution(object):
         if numRows == 1 or numRows >= len(s):
             return s
 
-        res: list[str] = []
-        n: int = len(s)
-        
-        cycleLen: int = 2 * numRows - 2  # Number of elements in one cycle
-        
-        for i in range(numRows):
-            for j in range(i, n, cycleLen):
-                res.append(s[j])
-                if i != 0 and i != numRows - 1 and j + cycleLen - 2*i < n:
-                    res.append(s[j + cycleLen - 2*i])
-        return "".join(res)
+        # Initialize a list of empty strings for each row
+        zigzag: list[str] = ['' for _ in range(numRows)]
+        row, step = 0, 1
+
+        # Iterate over the string
+        for char in s:
+            # Add the current character to the current row
+            zigzag[row] += char
+            
+            # If we've reached the top or bottom of the zigzag, change direction
+            if row == 0:
+                step = 1
+            elif row == numRows - 1:
+                step = -1
+                
+            # Move to the next row
+            row += step
+
+        # Join all rows to get the result
+        return ''.join(zigzag)
