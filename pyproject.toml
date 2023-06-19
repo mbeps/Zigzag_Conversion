@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "python-template"
+version = "0.1.0"
+description = "A Python template designed for answering leetCode questions. This template contains a main file where the solution is and a test file where the test cases are. The workflow prevents merging code to main if the tests do no pass."
+authors = ["Maruf Bepary <bepary71@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "python_template"}]
+
+[tool.poetry.dependencies]
+python = "3.9^"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
